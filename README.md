@@ -6,7 +6,6 @@ The sashash package provides powerful and efficient hash-based lookup and valida
 
 
 # %kvlookup()
-Purpose: <br>
 Enables efficient and dynamic retrieval of variables from a specified master dataset based on provided keys, directly within a single data step without separate sorting or merging.<br>
 Usage Example:<br>
 
@@ -16,3 +15,23 @@ Usage Example:<br>
           wh=Age > 12,<br>
           warn=Y,<br>
           dropviewflg=Y);<br>
+
+
+# %keycheck()
+Dynamically validates the existence of keys within a master dataset directly within a single data step. Ideal for rapid data integrity checks and immediate flagging of key existence or non-existence.<br>
+Usage Example:<br>
+
+%keycheck(master=sashelp.class,<br>
+          key=Name,<br>
+          wh=Age >= 15,<br>
+          fl=exist_flag,<br>
+          cat=YN,<br>
+          dropviewflg=Y);<br>
+
+# version history
+0.0.1(22April2025): Initial version
+
+# What is SAS Packages?
+SASPACer is built on top of **SAS Packages framework(SPF)** created by Bartosz Jablonski.
+For more on SAS Packages framework, see [SAS_PACKAGES]([https://github.com](https://github.com/yabwon/SAS_PACKAGES)).
+You can also find more SAS Packages(SASPAC) in [SASPACK]([[https://github.com](https://github.com/SASPAC))
