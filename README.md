@@ -5,7 +5,7 @@ The sashash package provides powerful and efficient hash-based lookup and valida
 <img width="180" alt="Image" src="https://github.com/user-attachments/assets/51466461-8f76-49e1-80f0-8ebb791c3d46" />
 
 
-#%kvlookup()
+# %kvlookup()
 Purpose: 
 Enables efficient and dynamic retrieval of variables from a specified master dataset based on provided keys, directly within a single data step without separate sorting or merging.
 Usage Example:
