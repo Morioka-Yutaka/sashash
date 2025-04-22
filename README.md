@@ -12,7 +12,7 @@ Usage Example:<br>
 %kvlookup(master=sashelp.class,<br>
           key=Name,         <br>
           var=Age Sex,<br>
-          wh=Age > 12,<br>
+          wh=　%nrbquote(Age > 12),<br>
           warn=Y,<br>
           dropviewflg=Y);<br>
 
@@ -23,7 +23,7 @@ Usage Example:<br>
 
 %keycheck(master=sashelp.class,<br>
           key=Name,<br>
-          wh=Age >= 15,<br>
+          wh= %nrbquote(Age >= 15),<br>
           fl=exist_flag,<br>
           cat=YN,<br>
           dropviewflg=Y);<br>
