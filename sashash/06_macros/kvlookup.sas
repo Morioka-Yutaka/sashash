@@ -23,7 +23,7 @@
 *   %kvlookup(master=sashelp.class,
 *             key=Name,
 *             var=Age Sex,
-*             wh=Age > 12,
+*             wh= %nrbquote(Age > 12),
 *             warn=Y,
 *             dropviewflg=Y);
 *
