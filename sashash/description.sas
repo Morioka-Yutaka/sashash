@@ -7,7 +7,7 @@ Maintainer : Yutaka Morioka(sasyupi@gmail.com)
 License : MIT
 Encoding : UTF8
 Required : "Base SAS Software"
-ReqPackages : "Baseplus (2.1.0)"
+ReqPackages : None
 
 DESCRIPTION START:
 Description: The sashash package provides powerful and efficient hash-based lookup and validation tools specifically designed for SAS programming. Leveraging the robust capabilities of SAS hash objects, this package enables rapid and dynamic key-based data retrieval and existence checking directly within a single data step. This significantly reduces the need for separate sort and merge steps, streamlining workflows and enhancing performance.
