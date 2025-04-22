@@ -13,13 +13,8 @@ Enables efficient and dynamic retrieval of variables from a specified master dat
 Usage Example:
 
 %kvlookup(master=sashelp.class,
-
-          key=Name,
-          
+          key=Name,         
           var=Age Sex,
-          
           wh=Age > 12,
-          
           warn=Y,
-          
           dropviewflg=Y);
