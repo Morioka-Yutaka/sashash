@@ -22,7 +22,7 @@
 * USAGE:
 *   %keycheck(master=sashelp.class,
 *             key=Name,
-*             wh=Age >= 15,
+*             wh=%nbquote(Age >= 15),
 *             fl=exist_flag,
 *             cat=YN,
 *             dropviewflg=Y);
