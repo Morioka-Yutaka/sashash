@@ -6,15 +6,13 @@ The sashash package provides powerful and efficient hash-based lookup and valida
 
 
 # %kvlookup()
-Purpose: 
+Purpose: <br>
+Enables efficient and dynamic retrieval of variables from a specified master dataset based on provided keys, directly within a single data step without separate sorting or merging.<br>
+Usage Example:<br>
 
-Enables efficient and dynamic retrieval of variables from a specified master dataset based on provided keys, directly within a single data step without separate sorting or merging.
-
-Usage Example:
-
-%kvlookup(master=sashelp.class,
-          key=Name,         
-          var=Age Sex,
-          wh=Age > 12,
-          warn=Y,
-          dropviewflg=Y);
+%kvlookup(master=sashelp.class,<br>
+          key=Name,         <br>
+          var=Age Sex,<br>
+          wh=Age > 12,<br>
+          warn=Y,<br>
+          dropviewflg=Y);<br>
