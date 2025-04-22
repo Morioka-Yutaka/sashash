@@ -32,6 +32,6 @@ Usage Example:<br>
 0.0.1(22April2025): Initial version
 
 # What is SAS Packages?
-SASPACer is built on top of **SAS Packages framework(SPF)** created by Bartosz Jablonski.<br>
+sashash is built on top of **SAS Packages framework(SPF)** created by Bartosz Jablonski.<br>
 For more on SAS Packages framework, see [SASPAC](https://github.com/yabwon/SAS_PACKAGES).<br>
 You can also find more SAS Packages(SASPAC) in [GitHub](https://github.com/SASPAC)<br>
