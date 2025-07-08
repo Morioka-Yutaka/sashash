@@ -11,7 +11,7 @@ Usage Example:<br>
 ~~~sas  
 %kvlookup(master=sashelp.class,
           key=Name,         
-          var=Age Sex,<br>
+          var=Age Sex,
           wh=　%nrbquote(Age > 12),
           warn=Y,
           dropviewflg=Y);
@@ -21,12 +21,14 @@ Usage Example:<br>
 Dynamically validates the existence of keys within a master dataset directly within a single data step. Ideal for rapid data integrity checks and immediate flagging of key existence or non-existence.<br>
 Usage Example:<br>
 
-%keycheck(master=sashelp.class,<br>
-          key=Name,<br>
-          wh= %nrbquote(Age >= 15),<br>
-          fl=exist_flag,<br>
-          cat=YN,<br>
-          dropviewflg=Y);<br>
+~~~sas  
+%keycheck(master=sashelp.class,
+          key=Name,
+          wh= %nrbquote(Age >= 15),
+          fl=exist_flag,
+          cat=YN,
+          dropviewflg=Y);
+~~~
 
 # version history
 0.0.1(22April2025): Initial version
