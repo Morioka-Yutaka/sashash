@@ -34,7 +34,7 @@ Usage Example:<br>
 0.0.1(22April2025): Initial version
 
 ## What is SAS Packages?  
-PharmaForest is a repository of SAS packages. These packages are built on top of **SAS Packages framework(SPF)**, which was developed by Bartosz Jablonski.  
+The package is built on top of **SAS Packages framework(SPF)** developed by Bartosz Jablonski.
 For more information about SAS Packages framework, see [SAS_PACKAGES](https://github.com/yabwon/SAS_PACKAGES).  
 You can also find more SAS Packages(SASPACs) in [SASPAC](https://github.com/SASPAC).
 
