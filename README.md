@@ -30,6 +30,21 @@ Usage Example:<br>
           dropviewflg=Y);
 ~~~
 
+# %kduppchk()
+General-purpose duplicate key checker using SAS hash objects.  
+Parameters:
+~~~text  
+  key  : One or more key variables used to detect duplicates (space-delimited).
+~~~
+
+~~~sas 
+data a;
+set sashelp.class;
+%kduppchk(AGE SEX);
+%kduppchk(NAME);
+run;
+~~~
+
 # version history
 0.0.2(23July2025): first stable version
 0.0.1(22April2025): Initial version
