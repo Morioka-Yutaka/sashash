@@ -9,61 +9,23 @@
 ### Version information:
   
 - Package: sashash
-- Version: 0.0.1
-- Generated: 2025-04-22T14:37:35
+- Version: 0.0.2
+- Generated: 2025-07-23T23:28:37
 - Author(s): Yutaka Morioka(sasyupi@gmail.com)
 - Maintainer(s): Yutaka Morioka(sasyupi@gmail.com)
 - License: MIT
-- File SHA256: `F*683ABB9992C856F808197D7775923D779FC596C5FABB3C144F11519C992E2E89` for this version
-- Content SHA256: `C*EDF1B897B259DB796674D8730ABEDB69B3F7F60F667DDD8A6F6DEDAC444691BE` for this version
+- File SHA256: `F*17544039E9833FEDCDCCF68748A50B5E7BE14079244621E24B2444BAA5477374` for this version
+- Content SHA256: `C*AC4308D2C6E96EBC1020FBCB1FDD69F7823DF6A250FE12EBF02EF6F762410948` for this version
   
 ---
  
-# The `sashash` package, version: `0.0.1`;
+# The `sashash` package, version: `0.0.2`;
   
 ---
  
 Description: The sashash package provides powerful and efficient hash-based lookup and validation tools specifically designed for SAS programming. Leveraging the robust capabilities of SAS hash objects, this package enables rapid and dynamic key-based data retrieval and existence checking directly within a single data step. This significantly reduces the need for separate sort and merge steps, streamlining workflows and enhancing performance.
-
 Concept: The core strength of the sashash package is its ability to simplify and accelerate data processing tasks by eliminating repetitive data sort and merge operations. Users can perform multiple data joins and validations dynamically within a single SAS data step, using keys generated on-the-fly during processing, thereby dramatically improving both flexibility and speed.
 
-Included Macros:
-
-kvlookup Macro:
-
-Purpose: Enables efficient and dynamic retrieval of variables from a specified master dataset based on provided keys, directly within a single data step without separate sorting or merging.
-
-Usage Example:
-
-%kvlookup(master=sashelp.class,
-          key=Name,
-          var=Age Sex,
-          wh=Age > 12,
-          warn=Y,
-          dropviewflg=Y);
-
-keycheck Macro:
-
-Purpose: Dynamically validates the existence of keys within a master dataset directly within a single data step. Ideal for rapid data integrity checks and immediate flagging of key existence or non-existence.
-
-Usage Example:
-
-%keycheck(master=sashelp.class,
-          key=Name,
-          wh=Age >= 15,
-          fl=exist_flag,
-          cat=YN,
-          dropviewflg=Y);
-
-Ideal for:
-
-Data analysts and SAS programmers dealing with large datasets requiring multiple lookups or validations.
-
-Scenarios where performance and flexibility are critical, eliminating the overhead associated with separate sort and merge operations.
-
-Complex data processing tasks where keys must be dynamically generated and validated within the data step.
-
-The sashash package dramatically simplifies complex data manipulations, enabling faster, more efficient, and flexible data processing within SAS.
   
 ---
  
@@ -72,11 +34,6 @@ The sashash package dramatically simplifies complex data manipulations, enabling
  
 Required SAS Components: 
   - Base SAS Software
-  
----
- 
-Required SAS Packages: 
-  - Baseplus (2.1.0)
   
 ---
  
@@ -90,110 +47,185 @@ Required SAS Packages:
 # The `sashash` package content
 The `sashash` package consists of the following content:
  
-1. [`mylib1` libname ](#mylib1-libname-1 )
-2. [`biggerdataset` data ](#biggerdataset-data-2 )
-3. [`smalldataset` data ](#smalldataset-data-3 )
-4. [`%keycheck()` macro ](#keycheck-macros-4 )
-5. [`%kvlookup()` macro ](#kvlookup-macros-5 )
+1. [`%kduppchk()` macro ](#kduppchk-macros-1 )
+2. [`%keycheck()` macro ](#keycheck-macros-2 )
+3. [`%kvlookup()` macro ](#kvlookup-macros-3 )
   
  
-6. [License note](#license)
+4. [License note](#license)
   
 ---
  
-## `mylib1` libname <a name="mylib1-libname-1"></a> ######
+## `%kduppchk()` macro <a name="kduppchk-macros-1"></a> ######
 
-Create mylib library under work directory.
+Program   : kduppchk.sas
+Macro     : %kduppchk
+Purpose   : General-purpose duplicate key checker using SAS hash objects.
+Description:
+  - This macro checks for duplicate key combinations in a DATA step using hash objects.
+  - On the first call (_N_ = 1), it initializes a hash object with the specified keys.
+  - If a duplicate key combination is found (i.e., already exists in the hash), 
+    it outputs a WARNING and sets the flag variable `dupchk = 1`.
+  - If all key variables are non-missing and not yet in the hash, the key is added.
+
+Parameters:
+  key  : One or more key variables used to detect duplicates (space-delimited).
+
+Output:
+  - Writes a WARNING message to the log when duplicates are found.
+  - Sets a flag variable `dupchk = 1` for duplicated records.
+
+Usage Example:
+  data check;
+    set input_data;
+    %kduppchk(subjid visit);
+  run;
+
+Notes:
+  - Can be used inline within a DATA step.
+  - Records with missing key values are skipped from hash addition.
+
+Author    : Yutaka Morioka
+licence : MIT
 
   
 ---
  
-## `biggerdataset` data <a name="biggerdataset-data-2"></a> ######
-
-[Sample data]  This is a bigger dataset.
-
-  
----
- 
-## `smalldataset` data <a name="smalldataset-data-3"></a> ######
-
-[Sample data] This is a small dataset.
-
-  
----
- 
-## `%keycheck()` macro <a name="keycheck-macros-4"></a> ######
+## `%keycheck()` macro <a name="keycheck-macros-2"></a> ######
 
 * MACRO NAME: keycheck
+
 *
+
 * PURPOSE:
+
 *   Checks the existence of specified key(s) in a master dataset using
+
 *   a hash object. Optionally subsets master data using conditions and
+
 *   returns results as categorical (YN) or numerical indicators.
+
 *
+
 * PARAMETERS:
+
 *   master     : (Required) Name of the master dataset to check against.
+
 *   key        : (Required) Space-separated list of key variables to check.
+
 *   wh         : (Optional) SQL WHERE clause condition to subset the master
+
 *                dataset before loading into hash table. Default is none.
+
 *   fl         : (Required) Name of the output variable indicating existence.
+
 *   cat        : (Optional) Controls output format of existence indicator:
+
 *                   - 'YN' (default): Returns 'Y' if key exists, 'N' otherwise.
+
 *                   - 'NUM': Returns 1 if key exists, 0 otherwise.
+
 *   dropviewflg: (Optional) Y/N flag. If 'Y', drops temporary SQL view created
+
 *                when the 'wh' parameter is used. Default is 'Y'.
+
 *
+
 * USAGE:
+
 *   %keycheck(master=sashelp.class,
+
 *             key=Name,
+
 *             wh=Age >= 15,
+
 *             fl=exist_flag,
+
 *             cat=YN,
+
 *             dropviewflg=Y);
+
 *
+
 * NOTES:
+
 *   - This macro creates a hash object on the first record processed.
+
 *   - Efficient for repeated existence checks within data steps.
+
 *   - The macro automatically cleans up temporary views unless explicitly
+
 *     disabled by setting dropviewflg=N.
 
   
 ---
  
-## `%kvlookup()` macro <a name="kvlookup-macros-5"></a> ######
+## `%kvlookup()` macro <a name="kvlookup-macros-3"></a> ######
 
 * MACRO NAME: kvlookup
+
 *
+
 * PURPOSE:
+
 *   Performs a hash table lookup to efficiently retrieve variables from a
+
 *   master dataset based on specified keys. Optionally subsets master data
+
 *   using a condition and manages temporary views.
+
 *
+
 * PARAMETERS:
+
 *   master     : (Required) Name of the master dataset to lookup from.
+
 *   key        : (Required) Space-separated list of key variables for the lookup.
+
 *   var        : (Required) Space-separated list of variables to retrieve from
+
 *                the master dataset. Default is none.
+
 *   wh         : (Optional) SQL WHERE clause condition to subset the master
+
 *                dataset before loading into hash table. Default is none.
+
 *   warn       : (Optional) Y/N flag. If 'Y', issues a warning in the log
+
 *                when the lookup key is not found. Default is 'N'.
+
 *   dropviewflg: (Optional) Y/N flag. If 'Y', drops temporary SQL view created
+
 *                when the 'wh' parameter is used. Default is 'Y'.
+
 *
+
 * USAGE:
+
 *   %kvlookup(master=sashelp.class,
+
 *             key=Name,
+
 *             var=Age Sex,
+
 *             wh=Age > 12,
+
 *             warn=Y,
+
 *             dropviewflg=Y);
+
 *
+
 * NOTES:
+
 *   - This macro creates a hash object dynamically on the first execution,
+
 *     improving performance for repeated lookups.
+
 *   - Ensure keys specified uniquely identify records in the master dataset.
+
 *   - The macro automatically cleans up temporary views unless explicitly
+
 *     disabled by setting dropviewflg=N.
 
   
@@ -204,25 +236,22 @@ Create mylib library under work directory.
  
 # License <a name="license"></a> ######
  
-	Copyright (c) [2025] [Yutaka Morioka]
-
-  Permission is hereby granted, free of charge, to any person obtaining a copy  
-  of this software and associated documentation files (the "Software"), to deal  
-  in the Software without restriction, including without limitation the rights  
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell     
-  copies of the Software, and to permit persons to whom the Software is         
-  furnished to do so, subject to the following conditions:                      
-                                                                                
-  The above copyright notice and this permission notice shall be included       
-  in all copies or substantial portions of the Software.                        
-                                                                                
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR    
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,      
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE   
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER        
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
-  SOFTWARE.
+Copyright (c) [2025] [Yutaka Morioka]
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
   
 ---
  
