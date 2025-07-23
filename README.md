@@ -31,6 +31,7 @@ Usage Example:<br>
 ~~~
 
 # version history
+0.0.2(23July2025): first stable version
 0.0.1(22April2025): Initial version
 
 ## What is SAS Packages?  
