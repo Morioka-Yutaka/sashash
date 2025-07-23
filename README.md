@@ -31,11 +31,13 @@ Usage Example:<br>
 ~~~
 
 # %kduppchk()
-General-purpose duplicate key checker using SAS hash objects.  
+General-purpose duplicate key checker using SAS hash objects. 
+
 Parameters:
 ~~~text  
   key  : One or more key variables used to detect duplicates (space-delimited).
 ~~~
+Usage Example:<br>
 
 ~~~sas 
 data a;
@@ -44,6 +46,7 @@ set sashelp.class;
 %kduppchk(NAME);
 run;
 ~~~
+<img width="264" height="129" alt="Image" src="https://github.com/user-attachments/assets/c9db88e8-558c-4857-95e8-1b8963e608e0" />
 
 # version history
 0.0.2(23July2025): first stable version
