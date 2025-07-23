@@ -42,7 +42,7 @@ cat        : (Optional) Controls output format of existence indicator:
             - 'YN' (default): Returns 'Y' if key exists, 'N' otherwise.
             - 'NUM': Returns 1 if key exists, 0 otherwise.
 dropviewflg: (Optional) Y/N flag. If 'Y', drops temporary SQL view created when the 'wh' parameter is used. Default is 'Y'.
-
+~~~
 
 Usage Example:<br>
 ~~~sas
