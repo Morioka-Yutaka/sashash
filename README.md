@@ -17,26 +17,44 @@ warn       : (Optional) Y/N flag. If 'Y', issues a warning in the log when the l
 dropviewflg: (Optional) Y/N flag. If 'Y', drops temporary SQL view created when the 'wh' parameter is used. Default is 'Y'.
 ~~~
 Usage Example:<br>
-~~~sas  
+~~~sas
+data a;
+set b;  
 %kvlookup(master=sashelp.class,
           key=Name,         
           var=Age Sex,
           wh=　%nrbquote(Age > 12),
           warn=Y,
           dropviewflg=Y);
+run;
 ~~~
 
 # %keycheck()
 Dynamically validates the existence of keys within a master dataset directly within a single data step. Ideal for rapid data integrity checks and immediate flagging of key existence or non-existence.<br>
-Usage Example:<br>
 
-~~~sas  
+PARAMETERS:  
+~~~text
+master     : (Required) Name of the master dataset to check against.
+key        : (Required) Space-separated list of key variables to check.
+wh         : (Optional) SQL WHERE clause condition to subset the master dataset before loading into hash table. Default is none.
+fl         : (Required) Name of the output variable indicating existence.
+cat        : (Optional) Controls output format of existence indicator:
+            - 'YN' (default): Returns 'Y' if key exists, 'N' otherwise.
+            - 'NUM': Returns 1 if key exists, 0 otherwise.
+dropviewflg: (Optional) Y/N flag. If 'Y', drops temporary SQL view created when the 'wh' parameter is used. Default is 'Y'.
+
+
+Usage Example:<br>
+~~~sas
+data a;
+set b;
 %keycheck(master=sashelp.class,
           key=Name,
           wh= %nrbquote(Age >= 15),
           fl=exist_flag,
           cat=YN,
           dropviewflg=Y);
+run;
 ~~~
 
 # %kduppchk()
