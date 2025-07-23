@@ -6,8 +6,17 @@ The sashash package provides powerful and efficient hash-based lookup and valida
 
 # %kvlookup()
 Enables efficient and dynamic retrieval of variables from a specified master dataset based on provided keys, directly within a single data step without separate sorting or merging.<br>
-Usage Example:<br>
 
+PARAMETERS:  
+~~~text
+master     : (Required) Name of the master dataset to lookup from.
+key        : (Required) Space-separated list of key variables for the lookup.
+var        : (Required) Space-separated list of variables to retrieve from the master dataset. Default is none.
+wh         : (Optional) SQL WHERE clause condition to subset the master dataset before loading into hash table. Default is none.
+warn       : (Optional) Y/N flag. If 'Y', issues a warning in the log when the lookup key is not found. Default is 'N'.
+dropviewflg: (Optional) Y/N flag. If 'Y', drops temporary SQL view created when the 'wh' parameter is used. Default is 'Y'.
+~~~
+Usage Example:<br>
 ~~~sas  
 %kvlookup(master=sashelp.class,
           key=Name,         
