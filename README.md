@@ -1,7 +1,7 @@
 # sashash
 The sashash package provides powerful and efficient hash-based lookup and validation tools specifically designed for SAS programming. Leveraging the robust capabilities of SAS hash objects, this package enables rapid and dynamic key-based data retrieval and existence checking directly within a single data step. This significantly reduces the need for separate sort and merge steps, streamlining workflows and enhancing performance.
 
-![sashsash](./hashsas_small.png)  
+<img width="350" height="350" alt="Image" src="https://github.com/user-attachments/assets/31ac7fe2-af78-4b9c-998f-196db9d6f6ac" />
 
 
 # %kvlookup()
