@@ -76,7 +76,7 @@ run;
 <img width="264" height="129" alt="Image" src="https://github.com/user-attachments/assets/c9db88e8-558c-4857-95e8-1b8963e608e0" />
 
 # version history
-0.0.3(11January2026): Bug-fix %keycheck's wh= parameter
+0.0.3(11January2026): Bug-fix %keycheck's wh= parameter  
 0.0.2(23July2025): first stable version  
 0.0.1(22April2025): Initial version
 
