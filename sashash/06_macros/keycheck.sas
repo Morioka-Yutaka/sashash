@@ -44,6 +44,7 @@ if _N_=1 then do;
 rc&name.=dosubl("proc sql noprint;
 create view h&name.(label=%unquote(%bquote('master=&master'))) as select * from &master where &wh;
 quit;");
+drop rc&name.;
 %end;
 %if %length(&wh) ne 0 %then %do;
 declare hash h&name.(dataset:"h&name.(keep= &key)" ,  multidata:'Y');
