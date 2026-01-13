@@ -9,17 +9,17 @@
 ### Version information:
   
 - Package: sashash
-- Version: 0.0.3
-- Generated: 2026-01-11T12:20:36
+- Version: 0.0.4
+- Generated: 2026-01-13T16:47:34
 - Author(s): Yutaka Morioka(sasyupi@gmail.com)
 - Maintainer(s): Yutaka Morioka(sasyupi@gmail.com)
 - License: MIT
-- File SHA256: `F*9E7BBEBB650F772D4864582AD92281B5C3E5E72D0FDBC04C5E13821434A7936A` for this version
-- Content SHA256: `C*A0381352A6B0041597567890F3201C782C195987E1CDE0834532E3328F80959F` for this version
+- File SHA256: `F*7074166F32D27530BD7E748F80A5F19E1BFC09368C210E77D90146C7B53F7162` for this version
+- Content SHA256: `C*849B38FFABF9B3088DAF714079AFD59CD9EAD2AC462CD38112E8EA775C1F92C3` for this version
   
 ---
  
-# The `sashash` package, version: `0.0.3`;
+# The `sashash` package, version: `0.0.4`;
   
 ---
  

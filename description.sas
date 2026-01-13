@@ -1,7 +1,7 @@
 Type : Package
 Package : sashash
 Title : sashash--Provides various macros related to Key-Value processing using SAS HASH objects.
-Version : 0.0.3
+Version : 0.0.4
 Author : Yutaka Morioka(sasyupi@gmail.com)
 Maintainer : Yutaka Morioka(sasyupi@gmail.com)
 License : MIT
