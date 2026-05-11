@@ -1,0 +1,8 @@
+{
+  "bundle": "t001_macro_kduppchk",
+  "source_file": "sashash/06_macros/kduppchk.sas",
+  "source_blob_sha": "c217bf68b6b222d10192f0c541e7430dbdd46a68",
+  "source_commit": "7658ddedf492a0411e8fb589358b727089ddcb3d",
+  "tier": "real_data",
+  "notes": "Exercises the %kduppchk() duplicate-key detector from sashash/06_macros/kduppchk.sas using a small inline (subjid,visit) cohort. The hash-object pattern from the macro body is inlined verbatim — the macro definition itself is reproduced in a comment block at the top of script.sas for reference. Two duplicate rows (S001/V1 and S003/V1) are flagged with dupchk=1 and a WARNING."
+}

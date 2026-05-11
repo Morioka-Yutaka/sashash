@@ -1,0 +1,8 @@
+{
+  "bundle": "t003_macro_kvlookup",
+  "source_file": "sashash/06_macros/kvlookup.sas",
+  "source_blob_sha": "da38859ee0b37c841bf9f50de0385e19997f9b24",
+  "source_commit": "7658ddedf492a0411e8fb589358b727089ddcb3d",
+  "tier": "real_data",
+  "notes": "Exercises the %kvlookup() retrieval pattern from sashash/06_macros/kvlookup.sas. The declare hash + duplicate:'E' + definekey/definedata/find sequence and the call missing(of &var) miss-branch are inlined verbatim from the macro body. A 5-row demographics master (name, age, height_cm) feeds a 5-row visit stream; four matches return age + height, the unknown name 'Frank' triggers the miss-branch with the macro's WARNING text."
+}

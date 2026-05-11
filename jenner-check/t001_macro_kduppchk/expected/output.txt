@@ -1,0 +1,14 @@
+WARNING:Dupp  subjid=S001visit=V1
+WARNING:Dupp  subjid=S003visit=V1
+               %kduppchk(subjid visit) -- duplicate flag per row                
+
+                                                Obs  SUBJID  VISIT  DUPCHK
+                                                  1  S001    V1
+                                                  2  S001    V2
+                                                  3  S002    V1
+                                                  4  S001    V1          1
+                                                  5  S002    V2
+                                                  6  S003    V1
+                                                  7  S003    V1          1
+                                                  8  S004    V1
+
