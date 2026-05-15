@@ -1,0 +1,1 @@
+This bundle produces no `files[]` or `datasets[]` artifacts in the API response — the script writes its result to the listing only. Re-running the bundle regenerates the log and listing identically; the URLs would be tied to a specific run and expire when the run is reaped.

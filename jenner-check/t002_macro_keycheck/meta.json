@@ -1,0 +1,8 @@
+{
+  "bundle": "t002_macro_keycheck",
+  "source_file": "sashash/06_macros/keycheck.sas",
+  "source_blob_sha": "48763f20c8243c7bde91413bf6bda39047780330",
+  "source_commit": "7658ddedf492a0411e8fb589358b727089ddcb3d",
+  "tier": "real_data",
+  "notes": "Exercises the %keycheck() existence-check pattern from sashash/06_macros/keycheck.sas. The hash-loader pattern (declare hash + dataset:'master(keep=name)' + multidata:'Y' + h.check()) and the ifc('Y','N') flag assignment are inlined verbatim from the macro body. A 5-row master and 5-row inbound stream produce three Y flags (Alice/Bob/Eve in master) and two N flags (Frank/Grace not in master)."
+}

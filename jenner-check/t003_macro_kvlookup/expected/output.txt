@@ -1,0 +1,10 @@
+WARNING:not exist master  name=Frank
+      %kvlookup(master=demographics, key=name, var=age height_cm, warn=Y)       
+
+                                            Obs   NAME  VISIT  AGE  HEIGHT_CM
+                                              1  Alice  V1      25        165
+                                              2  Bob    V1      30        178
+                                              3  Carol  V2      35        160
+                                              4  Frank  V1
+                                              5  Eve    V2      28        168
+

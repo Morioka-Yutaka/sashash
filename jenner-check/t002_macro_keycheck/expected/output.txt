@@ -1,0 +1,9 @@
+           %keycheck(master=master, key=name, fl=exist_flag, cat=YN)            
+
+                                              Obs   NAME  VISIT  EXIST_FLAG
+                                                1  Alice  V1     Y
+                                                2  Frank  V1     N
+                                                3  Bob    V1     Y
+                                                4  Grace  V2     N
+                                                5  Eve    V2     Y
+
